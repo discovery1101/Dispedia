@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dispedia.work.dispedia.DetailActivity">
+
+    <TextView
+        android:id="@+id/errorMsg"
+        android:layout_width="365dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="204dp"
+        android:text="登録が完了しました。"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/flatLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/flatLine"
+        android:layout_width="659dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="288dp"
+        android:layout_marginStart="6dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/wordName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorMsg" />
+
+    <TextView
+        android:id="@+id/wordName"
+        android:layout_width="77dp"
+        android:layout_height="40dp"
+        android:text="単語名："
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/readName"
+        app:layout_constraintEnd_toStartOf="@+id/wordNameText"
+        app:layout_constraintTop_toBottomOf="@+id/flatLine"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/wordNameText"
+        android:layout_width="333dp"
+        android:layout_height="40dp"
+        android:text="HTML5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/readName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wordName"
+        app:layout_constraintTop_toBottomOf="@+id/flatLine"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/readName"
+        android:layout_width="77dp"
+        android:layout_height="40dp"
+        android:text="よみ　："
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/wordMean"
+        app:layout_constraintEnd_toStartOf="@+id/readNameText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordName"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/readNameText"
+        android:layout_width="333dp"
+        android:layout_height="40dp"
+        android:text=" えいちてぃーえむえるふぁいぶ"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/readName"
+        app:layout_constraintTop_toBottomOf="@+id/wordNameText"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/wordMean"
+        android:layout_width="77dp"
+        android:layout_height="40dp"
+        android:text="意味　："
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/readName" />
+
+    <TextView
+        android:id="@+id/wordMeanText"
+        android:layout_width="286dp"
+        android:layout_height="109dp"
+        android:layout_marginEnd="48dp"
+        android:text="HyperText Markup Languageの第5版。今まで複雑だった処理が簡単に出来て、HTMLをより構造的にスッキリ書ける。"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wordMean"
+        app:layout_constraintTop_toBottomOf="@+id/readNameText"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tag"
+        android:layout_width="46dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="365dp"
+        android:text="●IT"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relationTag" />
+
+    <TextView
+        android:id="@+id/tagDot1"
+        android:layout_width="20dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="5dp"
+        android:text="・"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/tagButton1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tag" />
+
+    <Button
+        android:id="@+id/tagButton1"
+        android:layout_width="63dp"
+        android:layout_height="36dp"
+        android:text="css3"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/tagDot1"
+        app:layout_constraintTop_toBottomOf="@+id/tag" />
+
+    <TextView
+        android:id="@+id/tagDot2"
+        android:layout_width="20dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="68dp"
+        android:text="・"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/tagButton1"
+        app:layout_constraintTop_toBottomOf="@+id/wordMeanText" />
+
+    <Button
+        android:id="@+id/tagButton2"
+        android:layout_width="108dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="62dp"
+        android:text="JavaScript"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/tagDot2"
+        app:layout_constraintTop_toBottomOf="@+id/wordMeanText" />
+
+    <TextView
+        android:id="@+id/tagDot3"
+        android:layout_width="20dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="68dp"
+        android:text="・"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/tagButton2"
+        app:layout_constraintTop_toBottomOf="@+id/wordMeanText" />
+
+    <Button
+        android:id="@+id/tagButton3"
+        android:layout_width="85dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="62dp"
+        android:text="jQuery"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/tagDot3"
+        app:layout_constraintTop_toBottomOf="@+id/wordMeanText" />
+
+    <TextView
+        android:id="@+id/relationTag"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="321dp"
+        android:text="関連タグ"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordMeanText" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="323dp"
+        android:layout_marginTop="22dp"
+        android:text="編集"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tagButton1" />
+
+</android.support.constraint.ConstraintLayout>

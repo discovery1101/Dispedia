@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dispedia</string>
+
+    <string-array name="relationList">
+        <item>IT</item>
+        <item>会社</item>
+        <item>趣味</item>
+    </string-array>
+</resources>
