@@ -17,7 +17,7 @@ public class DetailActivity extends AppCompatActivity {
         Button sendTagButton2 = findViewById(R.id.tagButton2);
         Button sendTagButton3 = findViewById(R.id.tagButton3);
         Button sendEditButton = findViewById(R.id.editButton);
-        // テストコミット２
+        // テストコミット３
 
         sendTagButton1.setOnClickListener(new View.OnClickListener() {
             @Override
