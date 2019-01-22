@@ -14,7 +14,6 @@ import sqlite.SqliteOpenHelper;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private TextView tangoName, tangoKana, tangoMean;
     private SqliteOpenHelper helper;
     private SQLiteDatabase db;
 
@@ -36,7 +35,6 @@ public class DetailActivity extends AppCompatActivity {
         Button sendTagButton2 = findViewById(R.id.tagButton2);
         Button sendTagButton3 = findViewById(R.id.tagButton3);
         Button sendEditButton = findViewById(R.id.editButton);
-        // テストコミット３
 
         sendTagButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +71,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void readData(String tangoId){
+
+        TextView tangoName = findViewById(R.id.wordNameText);
+        TextView tangoKana = findViewById(R.id.readNameText);
+        TextView tangoMean = findViewById(R.id.wordMeanText);
 
         if(helper == null){
             helper = new SqliteOpenHelper(getApplicationContext());
