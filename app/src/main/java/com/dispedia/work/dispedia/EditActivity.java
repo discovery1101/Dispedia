@@ -13,6 +13,13 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
+        Intent intent = this.getIntent();
+        String mode = intent.getStringExtra("mode");
+
+        if ("R".equals(mode)) {
+            findViewById(R.id.radioEditMode).setVisibility(View.INVISIBLE);
+        }
+
         Button sendExecuteButton = findViewById(R.id.executeButton);
 
         sendExecuteButton.setOnClickListener(new View.OnClickListener() {
