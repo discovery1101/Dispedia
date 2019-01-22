@@ -39,12 +39,17 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/labelWordName"
         >
-        <RadioButton android:id="@+id/edit"
+        <RadioButton android:id="@+id/registerMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新規"
+            />
+        <RadioButton android:id="@+id/editMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="編集"
             />
-        <RadioButton android:id="@+id/delete"
+        <RadioButton android:id="@+id/deleteMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="削除"
@@ -86,7 +91,7 @@
         android:layout_marginEnd="120dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="HTML5"
+        android:text=""
         app:layout_constraintStart_toEndOf="@+id/labelWordName"
         app:layout_constraintTop_toBottomOf="@+id/radioEditMode" />
 
@@ -120,12 +125,13 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/inputContent"
                 android:layout_width="342dp"
                 android:layout_height="420dp"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
                 android:layout_marginTop="7dp"
-                android:text="HyperText Markup Languageの第5版。今まで複雑だった処理が簡単に出来て、HTMLをより構造的にスッキリ書ける。\n\nテキストエリアは、入力が指定したサイズを越えた場合スクロールします。\n\n\n\n\n\n\n\n\n\n\n\nここまで"
+                android:text=""
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/inputWordName"
                 app:layout_constraintStart_toStartOf="parent"
