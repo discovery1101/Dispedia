@@ -47,6 +47,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), EditActivity.class);
+                intent.putExtra("mode", "E");
                 startActivity(intent);
             }
         });

@@ -26,7 +26,8 @@ public class MenuActivity extends AppCompatActivity {
         sendResistButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), RegistActivity.class);
+                Intent intent = new Intent(getApplication(), EditActivity.class);
+                intent.putExtra("mode", "R");
                 startActivity(intent);
             }
         });
