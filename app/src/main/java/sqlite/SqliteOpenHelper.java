@@ -33,7 +33,7 @@ public class SqliteOpenHelper extends SQLiteOpenHelper {
                     + ITEM_ID + " INTEGER PRIMARY KEY,"
                     + ITEM_NAME + " TEXT,"
                     + ITEM_KANA + " TEXT,"
-                    + ITEM_INDEX + "INTEGER,"
+                    + ITEM_INDEX + " INTEGER,"
                     + CONTENT + " TEXT,"
                     + CATEGORY + " TEXT,"
                     + TAG1 + " TEXT,"
