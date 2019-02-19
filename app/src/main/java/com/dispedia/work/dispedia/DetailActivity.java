@@ -3,6 +3,7 @@ package com.dispedia.work.dispedia;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -102,6 +103,10 @@ public class DetailActivity extends AppCompatActivity {
             tangoName.setText(cursor.getString(1));
             tangoKana.setText(cursor.getString(2));
             tangoMean.setText(cursor.getString(3));
+        } else {
+            TextView errMsg = findViewById(R.id.errorMsg);
+            errMsg.setText("登録に失敗しました。");
+            errMsg.setTextColor(Color.RED);
         }
 
         cursor.close();
