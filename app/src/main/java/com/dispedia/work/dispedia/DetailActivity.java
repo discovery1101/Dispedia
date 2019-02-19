@@ -28,14 +28,20 @@ public class DetailActivity extends AppCompatActivity {
         // 遷移元画面からパラメータを受け取る。
         Intent intent = this.getIntent();
         String tangoId = intent.getStringExtra("id");
+        String mode = intent.getStringExtra("mode");
 
         if (tangoId == null) {
             // 単語IDが存在しない場合
             tangoId = "";
         }
 
+        if (mode == null) {
+            // 遷移元画面のモードが存在しない場合
+            mode = "";
+        }
+
         // DBから画面表示用のデータを取得する。
-        readData(tangoId);
+        readData(tangoId, mode);
 
         Button sendTagButton1 = findViewById(R.id.tagButton1);
         Button sendTagButton2 = findViewById(R.id.tagButton2);
@@ -76,11 +82,12 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
-    private void readData(String tangoId){
+    private void readData(String tangoId, String mode){
 
         TextView tangoName = findViewById(R.id.wordNameText);
         TextView tangoKana = findViewById(R.id.readNameText);
         TextView tangoMean = findViewById(R.id.wordMeanText);
+        TextView msg = findViewById(R.id.errorMsg);
 
         if(helper == null){
             helper = new SqliteOpenHelper(getApplicationContext());
@@ -108,15 +115,60 @@ public class DetailActivity extends AppCompatActivity {
             tangoName.setText(cursor.getString(1));
             tangoKana.setText(cursor.getString(2));
             tangoMean.setText(cursor.getString(3));
+
+            editMsg(mode, msg, Color.BLUE);
+
         } else {
-            TextView errMsg = findViewById(R.id.errorMsg);
-            errMsg.setText("登録に失敗しました。");
-            errMsg.setTextColor(Color.RED);
+            // 検索結果が存在しない場合
+            editMsg(mode, msg, Color.RED);
         }
 
         cursor.close();
 
         Log.d("debug","**********"+cursor);
 
+    }
+
+    private void editMsg(String mode, TextView msg, int msgColor) {
+        switch (mode) {
+            case "R":
+                // 新規登録の場合
+                if (Color.BLUE == msgColor) {
+                    // 正常の場合(文字の色が青)
+                    setMsg(msg, "登録が完了しました。", Color.BLUE);
+                } else {
+                    // 上記以外の場合
+                    setMsg(msg, "登録に失敗しました。", Color.RED);
+                }
+                break;
+            case "E":
+                // 編集の場合
+                if (Color.BLUE == msgColor) {
+                    // 正常の場合(文字の色が青)
+                    setMsg(msg, "編集が完了しました。", Color.BLUE);
+                } else {
+                    // 上記以外の場合
+                    setMsg(msg, "編集に失敗しました。", Color.RED);
+                }
+                break;
+            case "S":
+                // 検索の場合
+                if (Color.BLUE == msgColor) {
+                    // 正常の場合(文字の色が青)
+                    setMsg(msg, "検索が完了しました。", Color.BLUE);
+                } else {
+                    // 上記以外の場合
+                    setMsg(msg, "検索に失敗しました。", Color.RED);
+                }
+                break;
+            default:
+                // 存在しない場合
+                setMsg(msg, "システムエラー", Color.RED);
+        }
+    }
+
+    private void setMsg(TextView msg, String msgText, int msgColor) {
+        msg.setText(msgText);
+        msg.setTextColor(msgColor);
     }
 }
