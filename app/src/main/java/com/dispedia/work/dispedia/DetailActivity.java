@@ -29,6 +29,11 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         String tangoId = intent.getStringExtra("id");
 
+        if (tangoId == null) {
+            // 単語IDが存在しない場合
+            tangoId = "";
+        }
+
         // DBから画面表示用のデータを取得する。
         readData(tangoId);
 
