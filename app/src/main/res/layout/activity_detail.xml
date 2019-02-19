@@ -11,6 +11,7 @@
         android:layout_width="365dp"
         android:layout_height="31dp"
         android:layout_marginEnd="204dp"
+        android:layout_marginTop="8dp"
         android:text="登録が完了しました。"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
@@ -18,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -52,7 +54,6 @@
         android:text="HTML5"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/readName"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/wordName"
         app:layout_constraintTop_toBottomOf="@+id/flatLine"
         app:layout_constraintVertical_bias="1.0"
@@ -60,23 +61,21 @@
 
     <TextView
         android:id="@+id/readName"
-        android:layout_width="77dp"
+        android:layout_width="74dp"
         android:layout_height="40dp"
         android:text="よみ　："
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/wordMean"
         app:layout_constraintEnd_toStartOf="@+id/readNameText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wordName"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/readNameText"
-        android:layout_width="333dp"
+        android:layout_width="284dp"
         android:layout_height="40dp"
         android:text=" えいちてぃーえむえるふぁいぶ"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/readName"
         app:layout_constraintTop_toBottomOf="@+id/wordNameText"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -94,10 +93,8 @@
         android:id="@+id/wordMeanText"
         android:layout_width="286dp"
         android:layout_height="109dp"
-        android:layout_marginEnd="48dp"
         android:text="HyperText Markup Languageの第5版。今まで複雑だった処理が簡単に出来て、HTMLをより構造的にスッキリ書ける。"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/wordMean"
         app:layout_constraintTop_toBottomOf="@+id/readNameText"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -106,10 +103,8 @@
         android:id="@+id/tag"
         android:layout_width="46dp"
         android:layout_height="27dp"
-        android:layout_marginEnd="365dp"
         android:text="●IT"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relationTag" />
 
