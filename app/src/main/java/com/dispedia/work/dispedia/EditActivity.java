@@ -38,8 +38,8 @@ public class EditActivity extends AppCompatActivity {
 
         // 新規登録の場合
         if ("R".equals(mode)) {
-            radioEditMode.setVisibility(View.GONE);
             radioEditMode.check(R.id.registerMode);
+            radioEditMode.setVisibility(View.GONE);
 
         // 編集の場合
         } else if ("E".equals(mode)) {
@@ -54,9 +54,6 @@ public class EditActivity extends AppCompatActivity {
             initWordName = intent.getStringExtra("word");
             initReadName = intent.getStringExtra("kana");
             initContent = intent.getStringExtra("content");
-            inputWordName.setText(initWordName);
-            inputReadName.setText(initReadName);
-            inputContent.setText(initContent);
             */
             initWordName = "HTML5";
             initReadName = "えいちてぃーえむえるふぁいぶ";
@@ -77,7 +74,7 @@ public class EditActivity extends AppCompatActivity {
                 Spinner spinnerRelationTag = findViewById(R.id.spinnerRelationTag);
 
                 // 編集を選択した場合
-                if (edit.isChecked() == true) {
+                if (edit.isChecked()) {
                     inputWordName.setFocusable(true);
                     inputReadName.setFocusable(true);
                     inputContent.setFocusable(true);
@@ -92,7 +89,7 @@ public class EditActivity extends AppCompatActivity {
                     inputContent.setText(changedContent);
 
                 // 削除を選択した場合
-                } else if (delete.isChecked() == true) {
+                } else if (delete.isChecked()) {
                     inputWordName.setEnabled(false);
                     inputReadName.setEnabled(false);
                     inputContent.setEnabled(false);
@@ -113,9 +110,8 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
-        Button sendExecuteButton = findViewById(R.id.executeButton);
-
-        sendExecuteButton.setOnClickListener(new View.OnClickListener() {
+        Button executeButton = findViewById(R.id.executeButton);
+        executeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), DetailActivity.class);
