@@ -30,7 +30,7 @@ public class SqliteOpenHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " ("
-                    + ITEM_ID + " INTEGER PRIMARY KEY,"
+                    + ITEM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + ITEM_NAME + " TEXT,"
                     + ITEM_KANA + " TEXT,"
                     + ITEM_INDEX + " INTEGER,"
