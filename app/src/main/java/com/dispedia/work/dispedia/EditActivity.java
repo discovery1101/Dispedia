@@ -1,6 +1,7 @@
 package com.dispedia.work.dispedia;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,13 +32,14 @@ public class EditActivity extends AppCompatActivity {
     private SqliteOpenHelper helper;
     private SQLiteDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        TextView errorMsg = findViewById(R.id.errorMsg);
-        errorMsg.setVisibility(View.GONE);
+
         TextView flatLine = findViewById(R.id.flatLine);
         flatLine.setVisibility(View.GONE);
 
@@ -136,6 +138,8 @@ public class EditActivity extends AppCompatActivity {
                 if(db == null){
                     db = helper.getWritableDatabase();
                 }
+                TextView msg = findViewById(R.id.errorMsg);
+                //msg.setVisibility(View.GONE);
 
                 // モードにより処理を分岐する
                 RadioButton register = findViewById(R.id.registerMode);
@@ -155,34 +159,49 @@ public class EditActivity extends AppCompatActivity {
                     ArrayList<String> messages = new ArrayList<String>();
 
                     if(word.isEmpty()) {
-                        messages.add("単語名が未入力です。");
+                        setMsg(msg, "単語名が未入力です。", Color.RED);
+                        //messages.add("単語名が未入力です。");
                         isError = true;
                     }
 
                     if(kana.isEmpty()) {
-                        messages.add("かなが未入力です。");
+                        setMsg(msg, "かなが未入力です。", Color.RED);
+                        //messages.add("かなが未入力です。");
                         isError = true;
                     }
 
                     if(content.isEmpty()) {
-                        messages.add("意味が未入力です。");
+                        setMsg(msg, "意味が未入力です。", Color.RED);
+                        //messages.add("意味が未入力です。");
                         isError = true;
                     }
 
                     if(isError) {
-                        Intent intent = new Intent(getApplication(), EditActivity.class);
-                        intent.putExtra("messages", messages);
-                        startActivity(intent);
-                        // TODO 上記の記述だけで、続く処理を行わず詳細画面に遷移するか確認する。
-                    }
-                    insertData(db, id, word, kana, content);
+                        //Intent intent = new Intent(getApplication(), EditActivity.class);
+                        //intent.putExtra("errorMsg", msg);
+                        //startActivity(intent);
+                        // TODO 上記の記述不要
 
-                    // DBの通信処理が不正の場合、エラーメッセージを表示する。
-                    // 正常の場合、詳細画面に遷移し登録完了のメッセージを表示する。
-                    Intent intent = new Intent(getApplication(), DetailActivity.class);
-                    intent.putExtra("id", id);
-                    intent.putExtra("mode", "E");
-                    startActivity(intent);
+                    } else {
+                        long insertData = insertData(db, id, word, kana, content);
+
+                        // TODO DB接続をcloseする
+
+                        // TODO エラーハンドリング
+                        // 正常の場合、詳細画面に遷移し登録完了のメッセージを表示する。
+                        if (insertData != -1) {
+                            Intent intent = new Intent(getApplication(), DetailActivity.class);
+                            intent.putExtra("word", word);
+                            intent.putExtra("kana", kana);
+                            intent.putExtra("content", content);
+                            intent.putExtra("mode", "R");
+                            startActivity(intent);
+
+                            // DBの通信処理が不正の場合、エラーメッセージを表示する。
+                        } else {
+                            setMsg(msg, "登録に失敗しました。", Color.RED);
+                        }
+                    }
 
                     // 編集の場合
                 } else if(edit.isChecked()) {
@@ -198,7 +217,8 @@ public class EditActivity extends AppCompatActivity {
         });
     }
 
-    private void insertData(SQLiteDatabase db, String id, String word, String kana,String content) {
+    // TODO
+    private long insertData(SQLiteDatabase db, String id, String word, String kana,String content) {
 
         ContentValues values = new ContentValues();
         values.put("ITEM_ID", id);
@@ -215,7 +235,11 @@ public class EditActivity extends AppCompatActivity {
         values.put("REGIST_DATE", "");
         values.put("UPDATE_DATE", "");
 
-        db.insert("DP_DICTIONARY", null, values);
+        return db.insert("DP_DICTIONARY", null, values);
+    }
 
+    private void setMsg(TextView msg, String msgText, int msgColor) {
+        msg.setText(msgText);
+        msg.setTextColor(msgColor);
     }
 }

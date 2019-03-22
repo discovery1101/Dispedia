@@ -11,7 +11,7 @@
         android:layout_width="365dp"
         android:layout_height="31dp"
         android:layout_marginEnd="204dp"
-        android:text="よみは必須入力項目です。"
+        android:text=""
         android:textColor="@android:color/holo_red_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/flatLine"
