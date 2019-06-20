@@ -28,7 +28,11 @@ public class DetailActivity extends AppCompatActivity {
         // 遷移元画面からパラメータを受け取る。
         Intent intent = this.getIntent();
         String tangoId = intent.getStringExtra("id");
+        String wordNameText = intent.getStringExtra("word");
+        String readNameText = intent.getStringExtra("kana");
+        String wordMeanText = intent.getStringExtra("content");
         String mode = intent.getStringExtra("mode");
+        TextView msg = findViewById(R.id.errorMsg);
 
         if (tangoId == null) {
             // 単語IDが存在しない場合
@@ -40,8 +44,37 @@ public class DetailActivity extends AppCompatActivity {
             mode = "";
         }
 
+        boolean isError = false;
+
+        // TODO 入力チェック
+        if(wordNameText.isEmpty()) {
+            isError = true;
+        }
+        if(readNameText.isEmpty()) {
+            isError = true;
+        }
+        if(wordMeanText.isEmpty()) {
+            isError = true;
+        }
+
+        if(isError){
+            // TODO エラーメッセージ
+            setMsg(msg, "システムエラー", Color.RED);
+        } else {
+            setMsg(msg, "登録が完了しました", Color.BLUE);
+        }
+
+        TextView tangoName = findViewById(R.id.wordNameText);
+        TextView tangoKana = findViewById(R.id.readNameText);
+        TextView tangoMean = findViewById(R.id.wordMeanText);
+
         // DBから画面表示用のデータを取得する。
-        readData(tangoId, mode);
+        // readData(tangoId, mode);
+
+        tangoName.setText(wordNameText);
+        tangoKana.setText(readNameText);
+        tangoMean.setText(wordMeanText);
+
 
         Button sendTagButton1 = findViewById(R.id.tagButton1);
         Button sendTagButton2 = findViewById(R.id.tagButton2);
