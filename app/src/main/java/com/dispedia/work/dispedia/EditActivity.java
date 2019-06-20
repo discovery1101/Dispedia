@@ -32,7 +32,6 @@ public class EditActivity extends AppCompatActivity {
     private SqliteOpenHelper helper;
     private SQLiteDatabase db;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -105,7 +104,7 @@ public class EditActivity extends AppCompatActivity {
                     inputReadName.setText(changedReadName);
                     inputContent.setText(changedContent);
 
-                    // 削除を選択した場合
+                // 削除を選択した場合
                 } else if (delete.isChecked()) {
                     inputWordName.setEnabled(false);
                     inputReadName.setEnabled(false);
@@ -131,6 +130,8 @@ public class EditActivity extends AppCompatActivity {
         executeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 // SQLite接続のための初期処理
                 if(helper == null){
                     helper = new SqliteOpenHelper(getApplicationContext());
@@ -157,22 +158,19 @@ public class EditActivity extends AppCompatActivity {
                     content = inputContent.getText().toString();
                     boolean isError = false;
                     ArrayList<String> messages = new ArrayList<String>();
+                    String errMsg = "";
 
+                    // TODO 入力チェック
                     if(word.isEmpty()) {
-                        setMsg(msg, "単語名が未入力です。", Color.RED);
-                        //messages.add("単語名が未入力です。");
+                        messages.add("単語名");
                         isError = true;
                     }
-
                     if(kana.isEmpty()) {
-                        setMsg(msg, "かなが未入力です。", Color.RED);
-                        //messages.add("かなが未入力です。");
+                        messages.add("よみ");
                         isError = true;
                     }
-
                     if(content.isEmpty()) {
-                        setMsg(msg, "意味が未入力です。", Color.RED);
-                        //messages.add("意味が未入力です。");
+                        messages.add("意味");
                         isError = true;
                     }
 
@@ -180,7 +178,14 @@ public class EditActivity extends AppCompatActivity {
                         //Intent intent = new Intent(getApplication(), EditActivity.class);
                         //intent.putExtra("errorMsg", msg);
                         //startActivity(intent);
-                        // TODO 上記の記述不要
+                        // エラーメッセージを格納
+                        for(int i = 0; i < messages.size(); i++) {
+                            errMsg = errMsg + messages.get(i) + '、';
+                            if(i == messages.size() - 1) {
+                                errMsg = errMsg.substring(0, errMsg.length() - 1) + "が未入力です。";
+                            }
+                        }
+                        setMsg(msg, errMsg, Color.RED);
 
                     } else {
                         long insertData = insertData(db, id, word, kana, content);
@@ -224,6 +229,7 @@ public class EditActivity extends AppCompatActivity {
         values.put("ITEM_ID", id);
         values.put("ITEM_NAME", word);
         values.put("ITEM_KANA", kana);
+        // values.put("ITEM_INDEX", int 0); // index + 1 取得する
         values.put("CONTENT", content);
         values.put("CATEGORY", "");
         values.put("TAG1", "");
