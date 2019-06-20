@@ -133,6 +133,7 @@
                 android:layout_marginTop="7dp"
                 android:text=""
                 android:textSize="18sp"
+                android:gravity="top|left"
                 app:layout_constraintEnd_toStartOf="@+id/inputWordName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkBoxEdit" />
