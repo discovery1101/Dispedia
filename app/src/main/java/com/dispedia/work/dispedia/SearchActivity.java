@@ -7,6 +7,11 @@ package com.dispedia.work.dispedia;
         import android.widget.Button;
 
 public class SearchActivity extends AppCompatActivity {
+    // 変数ベタ書き
+    String id = "";
+    String word = "HTML5";
+    String kana = "えいちてぃーえむえるふぁいぶ";
+    String content = "HyperText Markup Languageの第5版。";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,12 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplication(), DetailActivity.class);
+
+                intent.putExtra("id", id);
+                intent.putExtra("word", word);
+                intent.putExtra("kana", kana);
+                intent.putExtra("content", content);
+
                 startActivity(intent);
             }
         });
